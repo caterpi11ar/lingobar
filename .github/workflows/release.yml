@@ -56,9 +56,12 @@ jobs:
         id: dmg
         shell: bash
         run: |
-          DMG_PATH="$(./scripts/build-release-dmg.sh "${{ steps.version.outputs.version }}" "$RUNNER_TEMP/release" "$GITHUB_RUN_NUMBER")"
-          echo "dmg_path=$DMG_PATH" >> "$GITHUB_OUTPUT"
-          echo "dmg_name=$(basename "$DMG_PATH")" >> "$GITHUB_OUTPUT"
+          VERSION="${{ steps.version.outputs.version }}"
+          OUTPUT_DIR="$RUNNER_TEMP/release"
+          DMG_NAME="Lingobar-v${VERSION}-unsigned.dmg"
+          ./scripts/build-release-dmg.sh "$VERSION" "$OUTPUT_DIR" "$GITHUB_RUN_NUMBER" >/dev/null
+          echo "dmg_path=${OUTPUT_DIR}/${DMG_NAME}" >> "$GITHUB_OUTPUT"
+          echo "dmg_name=${DMG_NAME}" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
