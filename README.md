@@ -32,6 +32,12 @@
 - `UserDefaults + Keychain`
 - `GitHub Actions`
 
+## 效果预览
+
+<video src="public/example.mp4" controls width="400"></video>
+
+![菜单栏翻译弹层](public/exmaple2.png)
+
 ## 仓库结构
 
 ```text
@@ -313,7 +319,23 @@ workflow 行为：
 - notarization
 - stapler
 
-因此用户在下载后，macOS 可能提示“来源未验证”或需要手动允许打开。
+因此用户在下载后，macOS 可能提示”来源未验证”或需要手动允许打开。
+
+### 首次打开未签名应用
+
+应用尚未使用 Apple 开发者证书签名，macOS Gatekeeper 会阻止从网上下载的未签名应用。
+
+**方法一** — 右键点击应用 → 选择”打开” → 在弹窗中点击”打开”（只需一次）。
+
+**方法二** — 前往 **系统设置 → 隐私与安全性**，下滑找到”仍要打开”按钮。
+
+**方法三** — 在终端中移除隔离标记：
+
+```bash
+xattr -cr “/Applications/Lingobar.app”
+```
+
+以上任一方法操作后，后续即可正常打开。
 
 ### 本地验证 release 打包
 
