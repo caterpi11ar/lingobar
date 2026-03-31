@@ -33,11 +33,16 @@ xcodebuild build \
 
 cp -R "$APP_PATH" "$STAGING_DIR/Lingobar.app"
 
-hdiutil create \
-  -volname "Lingobar" \
-  -srcfolder "$STAGING_DIR" \
-  -ov \
-  -format UDZO \
-  "$DMG_PATH" >/dev/null
+RW_DMG="$OUTPUT_DIR/_rw.dmg"
+MOUNT_DIR="$OUTPUT_DIR/_dmg_mount"
+rm -f "$RW_DMG"
+mkdir -p "$MOUNT_DIR"
+hdiutil create -volname "Lingobar" -size 200m -fs HFS+ -layout NONE "$RW_DMG" >/dev/null
+hdiutil attach "$RW_DMG" -nobrowse -readwrite -mountpoint "$MOUNT_DIR" >/dev/null
+cp -R "$STAGING_DIR/Lingobar.app" "$MOUNT_DIR/"
+ln -s /Applications "$MOUNT_DIR/Applications"
+hdiutil detach "$MOUNT_DIR" -quiet
+hdiutil convert "$RW_DMG" -format UDZO -o "$DMG_PATH" -ov >/dev/null
+rm -f "$RW_DMG"
 
 printf '%s\n' "$DMG_PATH"
