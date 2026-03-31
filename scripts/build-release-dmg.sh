@@ -29,7 +29,7 @@ xcodebuild build \
   -clonedSourcePackagesDirPath "$SOURCE_PACKAGES_DIR" \
   -derivedDataPath "$DERIVED_DATA_PATH" \
   MARKETING_VERSION="$VERSION" \
-  CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
+  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" >&2
 
 cp -R "$APP_PATH" "$STAGING_DIR/Lingobar.app"
 

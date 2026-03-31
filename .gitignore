@@ -13,6 +13,7 @@ DerivedData/
 
 # Release outputs
 /dist/
+/dist-*/
 
 # macOS junk
 .DS_Store
