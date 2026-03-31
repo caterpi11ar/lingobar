@@ -36,27 +36,6 @@ targets:
         product: LingobarApplication
       - package: LingobarKit
         product: LingobarDomain
-  LingobarTests:
-    type: bundle.unit-test
-    platform: macOS
-    deploymentTarget: "15.0"
-    sources:
-      - Packages/LingobarKit/Tests
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.LingobarTests
-        SWIFT_VERSION: 6.0
-        GENERATE_INFOPLIST_FILE: YES
-    dependencies:
-      - target: Lingobar
-      - package: LingobarKit
-        product: LingobarInfrastructure
-      - package: LingobarKit
-        product: LingobarApplication
-      - package: LingobarKit
-        product: LingobarDomain
-      - package: LingobarKit
-        product: LingobarTestSupport
   LingobarUITests:
     type: bundle.ui-testing
     platform: macOS
@@ -75,9 +54,7 @@ schemes:
     build:
       targets:
         Lingobar: all
-        LingobarTests: [test]
         LingobarUITests: [test]
     test:
       targets:
-        - LingobarTests
         - LingobarUITests

@@ -1,5 +1,6 @@
 import XCTest
 
+@MainActor
 final class LingobarUITests: XCTestCase {
     func testAPIKeyFieldOnlyAppearsForLLMProviders() throws {
         let suite = "LingobarUITests.\(UUID().uuidString)"

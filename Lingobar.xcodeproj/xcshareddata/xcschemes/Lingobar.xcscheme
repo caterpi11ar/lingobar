@@ -29,20 +29,6 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D3A200D3E758916035D8E467"
-               BuildableName = "LingobarTests.xctest"
-               BlueprintName = "LingobarTests"
-               ReferencedContainer = "container:Lingobar.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "90D41556A790E30AE2941A18"
                BuildableName = "LingobarUITests.xctest"
                BlueprintName = "LingobarUITests"
@@ -67,17 +53,6 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D3A200D3E758916035D8E467"
-               BuildableName = "LingobarTests.xctest"
-               BlueprintName = "LingobarTests"
-               ReferencedContainer = "container:Lingobar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO"
             parallelizable = "NO">

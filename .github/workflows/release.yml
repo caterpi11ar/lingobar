@@ -42,10 +42,13 @@ jobs:
 
       - name: Run tests
         run: |
+          swift test --package-path Packages/LingobarKit
+
           xcodebuild test \
             -project Lingobar.xcodeproj \
             -scheme Lingobar \
             -destination 'platform=macOS' \
+            -only-testing:LingobarUITests \
             -clonedSourcePackagesDirPath "$SOURCE_PACKAGES_DIR" \
             -derivedDataPath .xcode-derived-data-ci
 

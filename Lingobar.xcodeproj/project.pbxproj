@@ -8,37 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		0DE8452211B0D6915AB40327 /* MenuBarStatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6513125BD5121A09BBF02 /* MenuBarStatusItemController.swift */; };
-		1AB95D8887D7DC07C9B6AEEC /* LingobarDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99340CA963D01787BDA2B0FB /* LingobarDomainTests.swift */; };
 		1CF24B002833A7433A85F591 /* UITestWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DA605F00D0082B02565FA /* UITestWindowController.swift */; };
 		1D67375F4B7EEC0D0EDE4CD2 /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1225333A710DE273034B786E /* MenuBarContentView.swift */; };
-		22DD3AAC1FA8A7D189BAE2D7 /* LingobarInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = D69F5E81C83A39793ACC6F75 /* LingobarInfrastructure */; };
 		2E38DCBA3E5FCE6D2B81D6AC /* LingobarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130F4E99F8B65ACB796709F /* LingobarApp.swift */; };
 		6043A578B13729C89FB7A212 /* SettingsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAFDF6783DD9BEF3DF70EEF /* SettingsRootView.swift */; };
 		680E19DC0A2E0006F5027BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C33CBB642BF6774D4442D0A /* Assets.xcassets */; };
-		6A9D71BB69F54BFC53B0C777 /* LingobarTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CC956A3E0078E6E524B537DF /* LingobarTestSupport */; };
 		8CAEF85C9E92419FBAF5267E /* LingobarMenuIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = CA4EE2A5C778EAC6340FC206 /* LingobarMenuIcon.svg */; };
 		9BB8B6791D1E1B61E6CEE66B /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA596FA6AB061617C2A8E417 /* SettingsWindowController.swift */; };
 		A34F1CB442ADE6C120BF244C /* LingobarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1592675A62B434F0017546 /* LingobarUITests.swift */; };
-		A48AED3E60BFAFFECF5CFDEC /* LingobarApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA38C96B669D76F699CA44 /* LingobarApplicationTests.swift */; };
-		A7ACC12E7441A34F14C1AE42 /* LingobarDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 86333A5B72333E3949AABA61 /* LingobarDomain */; };
 		C79E268D31EF5894128FB124 /* MenuBarIconLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E480D364E4DB60C01485D /* MenuBarIconLoader.swift */; };
 		C807C96A2193218ADFCA60F6 /* LingobarDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 39276D46B3C4BB9EB91B9E2A /* LingobarDomain */; };
 		CFD97B2FB43B7AEFE49B36E1 /* LingobarApplication in Frameworks */ = {isa = PBXBuildFile; productRef = 44C5142E0D9C7193C53C43AD /* LingobarApplication */; };
-		E4318A5463E201A1011352CF /* LingobarApplication in Frameworks */ = {isa = PBXBuildFile; productRef = FBD37122DE4790B714802976 /* LingobarApplication */; };
 		E97C68FE56EE3BA179516FAC /* LingobarInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = 755101056B4A0F948295280C /* LingobarInfrastructure */; };
 		F46968917870535D6AB5729C /* LingobarAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8D75C39C2106FEB181224 /* LingobarAppModel.swift */; };
 		FB954E1A0217EDDEDB9E87DB /* MenuBarStatusLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A444E2B7F140EF4DC10AF /* MenuBarStatusLabelView.swift */; };
-		FDCB08C3E96BF9D6E1F5AE85 /* LingobarInfrastructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1C0DA06451CE6E9D59023 /* LingobarInfrastructureTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3BD42633F763EACCEC75369E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21BC16DA58B2EBBBC911D797 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AFDA05156F3CA768182F5573;
-			remoteInfo = Lingobar;
-		};
 		87609D978C3F3AF3588DFD7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21BC16DA58B2EBBBC911D797 /* Project object */;
@@ -52,18 +38,14 @@
 		01B8D75C39C2106FEB181224 /* LingobarAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingobarAppModel.swift; sourceTree = "<group>"; };
 		0A1592675A62B434F0017546 /* LingobarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingobarUITests.swift; sourceTree = "<group>"; };
 		1225333A710DE273034B786E /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
-		39B1C0DA06451CE6E9D59023 /* LingobarInfrastructureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingobarInfrastructureTests.swift; sourceTree = "<group>"; };
 		483BFCD051AD351E02549C47 /* Lingobar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lingobar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2E480D364E4DB60C01485D /* MenuBarIconLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIconLoader.swift; sourceTree = "<group>"; };
 		7C33CBB642BF6774D4442D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F9A444E2B7F140EF4DC10AF /* MenuBarStatusLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarStatusLabelView.swift; sourceTree = "<group>"; };
 		8130F4E99F8B65ACB796709F /* LingobarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingobarApp.swift; sourceTree = "<group>"; };
-		87FD2D00EF85128E3DCF8DB6 /* LingobarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LingobarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9897E9F6CCFF29FF089B63C6 /* LingobarKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LingobarKit; path = Packages/LingobarKit; sourceTree = SOURCE_ROOT; };
-		99340CA963D01787BDA2B0FB /* LingobarDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingobarDomainTests.swift; sourceTree = "<group>"; };
 		A4BFBA2F5FC17EF011C3A010 /* LingobarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LingobarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59DA605F00D0082B02565FA /* UITestWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestWindowController.swift; sourceTree = "<group>"; };
-		B8EA38C96B669D76F699CA44 /* LingobarApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingobarApplicationTests.swift; sourceTree = "<group>"; };
 		CA4EE2A5C778EAC6340FC206 /* LingobarMenuIcon.svg */ = {isa = PBXFileReference; path = LingobarMenuIcon.svg; sourceTree = "<group>"; };
 		E7E6513125BD5121A09BBF02 /* MenuBarStatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarStatusItemController.swift; sourceTree = "<group>"; };
 		FA596FA6AB061617C2A8E417 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
@@ -81,17 +63,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DBDD49E834310912AFE21ED1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22DD3AAC1FA8A7D189BAE2D7 /* LingobarInfrastructure in Frameworks */,
-				E4318A5463E201A1011352CF /* LingobarApplication in Frameworks */,
-				A7ACC12E7441A34F14C1AE42 /* LingobarDomain in Frameworks */,
-				6A9D71BB69F54BFC53B0C777 /* LingobarTestSupport in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				483BFCD051AD351E02549C47 /* Lingobar.app */,
-				87FD2D00EF85128E3DCF8DB6 /* LingobarTests.xctest */,
 				A4BFBA2F5FC17EF011C3A010 /* LingobarUITests.xctest */,
 			);
 			name = Products;
@@ -121,30 +91,6 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
-		6AFA4A6E1E77111205BAD8CC /* LingobarInfrastructureTests */ = {
-			isa = PBXGroup;
-			children = (
-				39B1C0DA06451CE6E9D59023 /* LingobarInfrastructureTests.swift */,
-			);
-			path = LingobarInfrastructureTests;
-			sourceTree = "<group>";
-		};
-		715BDAB0EAA6B5329B8A3DA5 /* LingobarDomainTests */ = {
-			isa = PBXGroup;
-			children = (
-				99340CA963D01787BDA2B0FB /* LingobarDomainTests.swift */,
-			);
-			path = LingobarDomainTests;
-			sourceTree = "<group>";
-		};
-		71A295D20947B4A5727B1FCC /* LingobarApplicationTests */ = {
-			isa = PBXGroup;
-			children = (
-				B8EA38C96B669D76F699CA44 /* LingobarApplicationTests.swift */,
-			);
-			path = LingobarApplicationTests;
-			sourceTree = "<group>";
-		};
 		74462C2B00F7F5A8265E4BA6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,20 +108,8 @@
 				4F39C79711E213F848330E6E /* Packages */,
 				74462C2B00F7F5A8265E4BA6 /* Resources */,
 				CB13267E64CA9F69842D11A1 /* Sources */,
-				7D6A88BECA48C74EC4409435 /* Tests */,
 				1EE46274C174995872388676 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		7D6A88BECA48C74EC4409435 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				71A295D20947B4A5727B1FCC /* LingobarApplicationTests */,
-				715BDAB0EAA6B5329B8A3DA5 /* LingobarDomainTests */,
-				6AFA4A6E1E77111205BAD8CC /* LingobarInfrastructureTests */,
-			);
-			name = Tests;
-			path = Packages/LingobarKit/Tests;
 			sourceTree = "<group>";
 		};
 		CB13267E64CA9F69842D11A1 /* Sources */ = {
@@ -247,29 +181,6 @@
 			productReference = 483BFCD051AD351E02549C47 /* Lingobar.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D3A200D3E758916035D8E467 /* LingobarTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7534DE7584A9997A942DD094 /* Build configuration list for PBXNativeTarget "LingobarTests" */;
-			buildPhases = (
-				61D0DBAF0EF455D20B9BEB49 /* Sources */,
-				DBDD49E834310912AFE21ED1 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FD55CEEE93DF268D63395AF8 /* PBXTargetDependency */,
-			);
-			name = LingobarTests;
-			packageProductDependencies = (
-				D69F5E81C83A39793ACC6F75 /* LingobarInfrastructure */,
-				FBD37122DE4790B714802976 /* LingobarApplication */,
-				86333A5B72333E3949AABA61 /* LingobarDomain */,
-				CC956A3E0078E6E524B537DF /* LingobarTestSupport */,
-			);
-			productName = LingobarTests;
-			productReference = 87FD2D00EF85128E3DCF8DB6 /* LingobarTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -305,7 +216,6 @@
 			projectRoot = "";
 			targets = (
 				AFDA05156F3CA768182F5573 /* Lingobar */,
-				D3A200D3E758916035D8E467 /* LingobarTests */,
 				90D41556A790E30AE2941A18 /* LingobarUITests */,
 			);
 		};
@@ -348,16 +258,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		61D0DBAF0EF455D20B9BEB49 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A48AED3E60BFAFFECF5CFDEC /* LingobarApplicationTests.swift in Sources */,
-				1AB95D8887D7DC07C9B6AEEC /* LingobarDomainTests.swift in Sources */,
-				FDCB08C3E96BF9D6E1F5AE85 /* LingobarInfrastructureTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -365,11 +265,6 @@
 			isa = PBXTargetDependency;
 			target = AFDA05156F3CA768182F5573 /* Lingobar */;
 			targetProxy = 87609D978C3F3AF3588DFD7E /* PBXContainerItemProxy */;
-		};
-		FD55CEEE93DF268D63395AF8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AFDA05156F3CA768182F5573 /* Lingobar */;
-			targetProxy = 3BD42633F763EACCEC75369E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -411,25 +306,6 @@
 				TEST_TARGET_NAME = Lingobar;
 			};
 			name = Release;
-		};
-		42FFD0A65769FDE65F2BE5DE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LingobarTests;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lingobar.app/Contents/MacOS/Lingobar";
-			};
-			name = Debug;
 		};
 		50820EEDD21B7A49217F05F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -493,25 +369,6 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
-		};
-		941E4449473954D73F0AC7FA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LingobarTests;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lingobar.app/Contents/MacOS/Lingobar";
-			};
-			name = Release;
 		};
 		CAD2712558207ACC35AA4A3F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -621,15 +478,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		7534DE7584A9997A942DD094 /* Build configuration list for PBXNativeTarget "LingobarTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				42FFD0A65769FDE65F2BE5DE /* Debug */,
-				941E4449473954D73F0AC7FA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		8D0C4A3C8FCC606C595887B4 /* Build configuration list for PBXNativeTarget "Lingobar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -669,22 +517,6 @@
 		755101056B4A0F948295280C /* LingobarInfrastructure */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LingobarInfrastructure;
-		};
-		86333A5B72333E3949AABA61 /* LingobarDomain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LingobarDomain;
-		};
-		CC956A3E0078E6E524B537DF /* LingobarTestSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LingobarTestSupport;
-		};
-		D69F5E81C83A39793ACC6F75 /* LingobarInfrastructure */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LingobarInfrastructure;
-		};
-		FBD37122DE4790B714802976 /* LingobarApplication */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LingobarApplication;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

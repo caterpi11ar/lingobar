@@ -113,8 +113,8 @@ open Lingobar.xcodeproj
 常用 target / scheme：
 
 - `Lingobar`：宿主应用
-- `LingobarTests`：单元与工作流测试
 - `LingobarUITests`：UI 测试
+- `Packages/LingobarKit`：Package 层单元测试、工作流测试、验证器
 
 ### 4. Debug / Release 差异
 
@@ -178,21 +178,31 @@ Release 产物路径：
 
 ### 全量测试
 
-主验收命令：
+CI 和本地都建议拆成两段执行：
 
 ```bash
+swift test --package-path Packages/LingobarKit
+
 xcodebuild test \
   -project Lingobar.xcodeproj \
   -scheme Lingobar \
   -destination 'platform=macOS' \
+  -only-testing:LingobarUITests \
   -clonedSourcePackagesDirPath .xcode-source-packages \
   -derivedDataPath .xcode-derived-data-menu
 ```
 
-这个命令会跑：
+这样分开的原因是：
 
-- `LingobarTests`
-- `LingobarUITests`
+- `LingobarKit` 内部测试由 SwiftPM 原生执行，避免把 package 测试文件重复编进宿主工程 target
+- `LingobarUITests` 继续通过 `xcodebuild` 运行，保留真实宿主和菜单栏窗口行为验证
+
+其中：
+
+- `swift test --package-path Packages/LingobarKit`
+  - 跑 package 层单元测试、工作流测试、基础设施测试
+- `xcodebuild test ... -only-testing:LingobarUITests`
+  - 只跑宿主应用 UI 测试
 
 ### 快速验证
 

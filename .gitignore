@@ -3,7 +3,10 @@
 .swiftpm/
 .swift-module-cache/
 .xcode-source-packages/
+.xcode-source-packages-ci/
 .xcode-derived-data/
+.xcode-derived-data-ci/
+.xcode-derived-data-ci-ui/
 .xcode-derived-data-menu/
 .xcode-derived-data-release/
 DerivedData/
