@@ -45,14 +45,14 @@ final class LingobarApplicationTests: XCTestCase {
 
     func testRequestQueueRetriesAfterTimeout() async throws {
         let queue = RequestQueue<String>(
-            options: RequestQueueConfig(rate: 50, capacity: 50, timeoutMs: 50, maxRetries: 1, baseRetryDelayMs: 10)
+            options: RequestQueueConfig(rate: 50, capacity: 50, timeoutMs: 100, maxRetries: 1, baseRetryDelayMs: 10)
         )
         let counter = CallCounter()
 
         let value = try await queue.enqueue({
             let attempt = await counter.increment()
             if attempt == 1 {
-                try await Task.sleep(for: .milliseconds(100))
+                try await Task.sleep(for: .milliseconds(2_000))
                 return "late"
             }
             return "recovered"
