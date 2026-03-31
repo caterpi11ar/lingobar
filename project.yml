@@ -1,0 +1,83 @@
+name: Lingobar
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    macOS: "15.0"
+packages:
+  LingobarKit:
+    path: Packages/LingobarKit
+targets:
+  Lingobar:
+    type: application
+    platform: macOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: App/Sources
+      - path: App/Assets.xcassets
+        buildPhase: resources
+      - path: App/Resources
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.Lingobar
+        PRODUCT_NAME: Lingobar
+        SWIFT_VERSION: 6.0
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+      configs:
+        Debug:
+          INFOPLIST_KEY_LSUIElement: NO
+        Release:
+          INFOPLIST_KEY_LSUIElement: YES
+    dependencies:
+      - package: LingobarKit
+        product: LingobarInfrastructure
+      - package: LingobarKit
+        product: LingobarApplication
+      - package: LingobarKit
+        product: LingobarDomain
+  LingobarTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "15.0"
+    sources:
+      - Packages/LingobarKit/Tests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.LingobarTests
+        SWIFT_VERSION: 6.0
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Lingobar
+      - package: LingobarKit
+        product: LingobarInfrastructure
+      - package: LingobarKit
+        product: LingobarApplication
+      - package: LingobarKit
+        product: LingobarDomain
+      - package: LingobarKit
+        product: LingobarTestSupport
+  LingobarUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    deploymentTarget: "15.0"
+    sources:
+      - App/Tests/LingobarUITests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.LingobarUITests
+        SWIFT_VERSION: 6.0
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Lingobar
+schemes:
+  Lingobar:
+    build:
+      targets:
+        Lingobar: all
+        LingobarTests: [test]
+        LingobarUITests: [test]
+    test:
+      targets:
+        - LingobarTests
+        - LingobarUITests

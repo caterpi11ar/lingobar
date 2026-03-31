@@ -1,0 +1,23 @@
+# Xcode / SwiftPM build artifacts
+.build/
+.swiftpm/
+.swift-module-cache/
+.xcode-source-packages/
+.xcode-derived-data/
+.xcode-derived-data-menu/
+.xcode-derived-data-release/
+DerivedData/
+
+# Release outputs
+/dist/
+
+# macOS junk
+.DS_Store
+
+# Local SQLite and runtime files
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Third-party reference clone
+third_party/read-frog/

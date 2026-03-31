@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    env:
+      DERIVED_DATA_PATH: .xcode-derived-data-release
+      SOURCE_PACKAGES_DIR: .xcode-source-packages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate --spec project.yml
+
+      - name: Resolve package dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project Lingobar.xcodeproj \
+            -scheme Lingobar \
+            -clonedSourcePackagesDirPath "$SOURCE_PACKAGES_DIR"
+
+      - name: Derive version metadata
+        id: version
+        shell: bash
+        run: |
+          TAG_NAME="${GITHUB_REF_NAME}"
+          VERSION="${TAG_NAME#v}"
+          echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+            -project Lingobar.xcodeproj \
+            -scheme Lingobar \
+            -destination 'platform=macOS' \
+            -clonedSourcePackagesDirPath "$SOURCE_PACKAGES_DIR" \
+            -derivedDataPath .xcode-derived-data-ci
+
+      - name: Build unsigned DMG
+        id: dmg
+        shell: bash
+        run: |
+          DMG_PATH="$(./scripts/build-release-dmg.sh "${{ steps.version.outputs.version }}" "$RUNNER_TEMP/release" "$GITHUB_RUN_NUMBER")"
+          echo "dmg_path=$DMG_PATH" >> "$GITHUB_OUTPUT"
+          echo "dmg_name=$(basename "$DMG_PATH")" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag_name }}
+          generate_release_notes: true
+          files: ${{ steps.dmg.outputs.dmg_path }}
