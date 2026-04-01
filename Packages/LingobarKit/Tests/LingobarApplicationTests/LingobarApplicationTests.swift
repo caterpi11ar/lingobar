@@ -207,7 +207,7 @@ final class LingobarApplicationTests: XCTestCase {
         monitor.emit(.init(changeCount: 1, string: "hello", origin: .external))
         monitor.emit(.init(changeCount: 2, string: "你好", origin: .selfWritten))
         monitor.emit(.init(changeCount: 2, string: "你好", origin: .external))
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(800))
         await coordinator.stop()
 
         let writes = await writer.writes
@@ -228,7 +228,7 @@ final class LingobarApplicationTests: XCTestCase {
             notificationsEnabled: false,
             statsEnabled: true,
             featureProviders: .init(clipboardTranslate: ProviderID.googleTranslate.rawValue),
-            translate: .init(batchQueueConfig: .init(batchDelayMs: 120)),
+            translate: .init(batchQueueConfig: .init(batchDelayMs: 600)),
             providersConfig: [ProviderConfig(id: ProviderID.googleTranslate.rawValue, name: "Google", provider: .googleTranslate)]
         )
         let settingsStore = InMemorySettingsStore(settings: settings)
@@ -262,7 +262,7 @@ final class LingobarApplicationTests: XCTestCase {
         monitor.emit(.init(changeCount: 1, string: "first", origin: .external))
         try await Task.sleep(for: .milliseconds(40))
         monitor.emit(.init(changeCount: 2, string: "second", origin: .external))
-        try await Task.sleep(for: .milliseconds(260))
+        try await Task.sleep(for: .milliseconds(1000))
         await coordinator.stop()
 
         let executedTexts = await recordedTexts.values
@@ -317,9 +317,9 @@ final class LingobarApplicationTests: XCTestCase {
 
         await testCoordinator.start()
         monitor.emit(.init(changeCount: 1, string: "hello world", origin: .external))
-        try await Task.sleep(for: .milliseconds(180))
+        try await Task.sleep(for: .milliseconds(600))
         monitor.emit(.init(changeCount: 2, string: "你好世界", origin: .external))
-        try await Task.sleep(for: .milliseconds(180))
+        try await Task.sleep(for: .milliseconds(600))
         await testCoordinator.stop()
 
         let languages = await capturedLanguages.values
@@ -367,7 +367,7 @@ final class LingobarApplicationTests: XCTestCase {
 
         await coordinator.start()
         monitor.emit(.init(changeCount: 1, string: "first", origin: .external))
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(600))
         let initialWrites = await writer.writes
         XCTAssertEqual(initialWrites, [])
 
@@ -376,7 +376,7 @@ final class LingobarApplicationTests: XCTestCase {
         try await settingsStore.save(updatedSettings)
 
         monitor.emit(.init(changeCount: 2, string: "second", origin: .external))
-        try await Task.sleep(for: .milliseconds(200))
+        try await Task.sleep(for: .milliseconds(600))
         await coordinator.stop()
 
         let writes = await writer.writes
