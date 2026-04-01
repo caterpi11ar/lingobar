@@ -33,6 +33,14 @@ xcodebuild build \
 
 cp -R "$APP_PATH" "$STAGING_DIR/Lingobar.app"
 
+# Verify the release build does not contain the debug-only get-task-allow entitlement.
+# This entitlement causes Gatekeeper to reject (or silently block) the app on other devices.
+if codesign -d --entitlements - "$STAGING_DIR/Lingobar.app" 2>/dev/null | grep -q 'get-task-allow'; then
+  echo "ERROR: Release build contains com.apple.security.get-task-allow entitlement." >&2
+  echo "This debug entitlement will cause Gatekeeper to block the app on other devices." >&2
+  exit 1
+fi
+
 RW_DMG="$OUTPUT_DIR/_rw.dmg"
 MOUNT_DIR="$OUTPUT_DIR/_dmg_mount"
 rm -f "$RW_DMG"
