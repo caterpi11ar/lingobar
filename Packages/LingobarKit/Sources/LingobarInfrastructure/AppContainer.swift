@@ -46,36 +46,20 @@ public final class AppContainer: @unchecked Sendable {
 
     public static func live() -> AppContainer {
         do {
-            let environment = ProcessInfo.processInfo.environment
-            let defaults: UserDefaults
-            if let suite = environment["LINGOBAR_SETTINGS_SUITE"], let suiteDefaults = UserDefaults(suiteName: suite) {
-                defaults = suiteDefaults
-            } else {
-                defaults = .standard
-            }
+            let defaults: UserDefaults = .standard
 
             let settingsStore = UserDefaultsSettingsStore(defaults: defaults)
-            let credentialsStore: any CredentialsStore
-            if environment["LINGOBAR_USE_INSECURE_TEST_CREDENTIALS"] == "1" {
-                credentialsStore = UserDefaultsCredentialsStore(defaults: defaults)
-            } else {
-                credentialsStore = KeychainCredentialsStore(service: "com.example.Lingobar")
-            }
+            let credentialsStore: any CredentialsStore = KeychainCredentialsStore(service: "com.example.Lingobar")
 
-            let database: AppDatabase
-            if let path = environment["LINGOBAR_DATABASE_PATH"], !path.isEmpty {
-                database = try AppDatabase(path: path)
-            } else {
-                let appSupport = try FileManager.default.url(
-                    for: .applicationSupportDirectory,
-                    in: .userDomainMask,
-                    appropriateFor: nil,
-                    create: true
-                )
-                let directory = appSupport.appendingPathComponent("Lingobar", isDirectory: true)
-                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-                database = try AppDatabase(path: directory.appendingPathComponent("lingobar.sqlite").path)
-            }
+            let appSupport = try FileManager.default.url(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
+            let directory = appSupport.appendingPathComponent("Lingobar", isDirectory: true)
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            let database = try AppDatabase(path: directory.appendingPathComponent("lingobar.sqlite").path)
 
             let cacheRepository = SQLiteTranslationCacheRepository(database: database)
             let statisticsRepository = SQLiteStatisticsRepository(database: database)
