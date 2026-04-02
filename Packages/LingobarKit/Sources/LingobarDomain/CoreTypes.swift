@@ -186,6 +186,67 @@ public enum ProviderID: String, Codable, CaseIterable, Hashable, Sendable {
             return nil
         }
     }
+
+    public var presetModels: [String] {
+        switch self {
+        case .openAI:
+            return ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "gpt-3.5-turbo", "o1", "o1-mini", "o3-mini"]
+        case .deepSeek:
+            return ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"]
+        case .google:
+            return ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-pro", "gemini-1.5-flash"]
+        case .anthropic:
+            return ["claude-sonnet-4-20250514", "claude-3-5-haiku-latest", "claude-3-5-sonnet-latest"]
+        case .xAI:
+            return ["grok-2-1212", "grok-2-latest", "grok-3-latest"]
+        case .groq:
+            return ["llama-3.1-8b-instant", "llama-3.1-70b-versatile", "mixtral-8x7b-32768"]
+        case .mistral:
+            return ["mistral-small-latest", "mistral-medium-latest", "mistral-large-latest"]
+        case .siliconflow:
+            return ["Qwen/Qwen2.5-7B-Instruct", "Qwen/Qwen2.5-72B-Instruct", "deepseek-ai/DeepSeek-V3"]
+        case .deepinfra:
+            return ["meta-llama/Meta-Llama-3.1-8B-Instruct", "meta-llama/Meta-Llama-3.1-70B-Instruct"]
+        case .togetherAI:
+            return ["meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo", "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo"]
+        case .cohere:
+            return ["command-r", "command-r-plus"]
+        case .fireworks:
+            return ["accounts/fireworks/models/llama-v3p1-8b-instruct", "accounts/fireworks/models/llama-v3p1-70b-instruct"]
+        case .cerebras:
+            return ["llama3.1-8b", "llama3.1-70b"]
+        case .perplexity:
+            return ["sonar", "sonar-pro", "sonar-reasoning"]
+        case .openrouter:
+            return ["openai/gpt-4o-mini", "openai/gpt-4o", "anthropic/claude-3.5-sonnet"]
+        case .ollama:
+            return ["llama3.1:8b", "llama3.2:3b", "qwen2.5:7b", "gemma2:9b"]
+        case .volcengine:
+            return ["doubao-lite-4k", "doubao-pro-4k", "doubao-pro-32k"]
+        case .minimax:
+            return ["MiniMax-Text-01"]
+        case .alibaba:
+            return ["qwen-plus", "qwen-turbo", "qwen-max"]
+        case .moonshotAI:
+            return ["moonshot-v1-8k", "moonshot-v1-32k", "moonshot-v1-128k"]
+        case .huggingFace:
+            return ["openai/gpt-oss-20b"]
+        case .openAICompatible:
+            return ["gpt-4o-mini", "gpt-4o"]
+        case .tensdaq:
+            return ["gpt-4o-mini", "gpt-4o"]
+        case .ai302:
+            return ["gpt-4o-mini", "gpt-4o"]
+        case .bedrock:
+            return ["anthropic.claude-3-5-haiku-20241022-v1:0"]
+        case .replicate:
+            return ["meta/meta-llama-3-8b-instruct"]
+        case .vercel:
+            return ["gpt-4o-mini"]
+        default:
+            return []
+        }
+    }
 }
 
 public enum ProviderCategory: String, Codable, CaseIterable, Sendable {

@@ -45,10 +45,52 @@ struct SettingsRootView: View {
                         }
                     }
                     .accessibilityIdentifier("settings.provider")
+                    .onChange(of: model.settings.featureProviders.clipboardTranslate) { _, _ in
+                        model.onProviderChanged()
+                    }
 
-                    if model.currentProvider()?.isLLMProvider == true {
+                    if let provider = model.currentProvider(), !provider.isNonAPIProvider {
+                        TextField(
+                            "Base URL",
+                            text: Binding(
+                                get: { model.providerBaseURL },
+                                set: { model.providerBaseURL = $0 }
+                            ),
+                            prompt: Text(provider.provider.defaultBaseURL ?? "https://")
+                        )
+                        .accessibilityIdentifier("settings.baseURL")
+                    }
+
+                    if model.currentProvider()?.requiresAPIKey == true {
                         SecureField("API Key", text: $model.providerAPIKey)
                             .accessibilityIdentifier("settings.apiKey")
+                    }
+
+                    if let provider = model.currentProvider(), provider.isLLMProvider {
+                        let presets = provider.provider.presetModels
+
+                        Picker("模型", selection: Binding(
+                            get: { model.providerSelectedModel },
+                            set: { model.providerSelectedModel = $0 }
+                        )) {
+                            ForEach(presets, id: \.self) { modelName in
+                                Text(modelName).tag(modelName)
+                            }
+                            Divider()
+                            Text("自定义").tag(LingobarAppModel.customModelSentinel)
+                        }
+                        .accessibilityIdentifier("settings.model")
+
+                        if model.providerSelectedModel == LingobarAppModel.customModelSentinel {
+                            TextField(
+                                "自定义模型 ID",
+                                text: Binding(
+                                    get: { model.providerCustomModel },
+                                    set: { model.providerCustomModel = $0 }
+                                )
+                            )
+                            .accessibilityIdentifier("settings.customModel")
+                        }
                     }
                 }
 

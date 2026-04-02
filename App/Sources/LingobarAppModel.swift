@@ -103,8 +103,85 @@ final class LingobarAppModel: ObservableObject {
         }
     }
 
+    static let customModelSentinel = "__custom__"
+
     func currentProvider() -> ProviderConfig? {
         settings.providerConfig(for: .clipboardTranslate)
+    }
+
+    private func currentProviderIndex() -> Int? {
+        let selectedID = settings.featureProviders.clipboardTranslate
+        return settings.providersConfig.firstIndex(where: { $0.id == selectedID })
+    }
+
+    var providerBaseURL: String {
+        get {
+            guard let provider = currentProvider() else { return "" }
+            return provider.baseURL ?? provider.provider.defaultBaseURL ?? ""
+        }
+        set {
+            guard let index = currentProviderIndex() else { return }
+            let defaultURL = settings.providersConfig[index].provider.defaultBaseURL ?? ""
+            settings.providersConfig[index].baseURL = (newValue.isEmpty || newValue == defaultURL) ? nil : newValue
+        }
+    }
+
+    var providerSelectedModel: String {
+        get {
+            guard let provider = currentProvider(), let modelConfig = provider.model else {
+                return currentProvider()?.provider.defaultModelIdentifier ?? ""
+            }
+            if modelConfig.isCustomModel {
+                return Self.customModelSentinel
+            }
+            return modelConfig.model
+        }
+        set {
+            guard let index = currentProviderIndex() else { return }
+            if newValue == Self.customModelSentinel {
+                let existing = settings.providersConfig[index].model
+                settings.providersConfig[index].model = ProviderModelConfig(
+                    model: existing?.model ?? settings.providersConfig[index].provider.defaultModelIdentifier ?? "",
+                    isCustomModel: true,
+                    customModel: existing?.customModel ?? ""
+                )
+            } else {
+                settings.providersConfig[index].model = ProviderModelConfig(
+                    model: newValue,
+                    isCustomModel: false,
+                    customModel: nil
+                )
+            }
+        }
+    }
+
+    var providerCustomModel: String {
+        get {
+            guard let provider = currentProvider() else { return "" }
+            return provider.model?.customModel ?? ""
+        }
+        set {
+            guard let index = currentProviderIndex() else { return }
+            if settings.providersConfig[index].model != nil {
+                settings.providersConfig[index].model?.customModel = newValue
+            } else {
+                settings.providersConfig[index].model = ProviderModelConfig(
+                    model: settings.providersConfig[index].provider.defaultModelIdentifier ?? "",
+                    isCustomModel: true,
+                    customModel: newValue
+                )
+            }
+        }
+    }
+
+    func onProviderChanged() {
+        Task {
+            if let provider = currentProvider() {
+                providerAPIKey = (try? await container.credentialsStore.apiKey(for: provider.id)) ?? provider.apiKey ?? ""
+            } else {
+                providerAPIKey = ""
+            }
+        }
     }
 
     var preferredColorScheme: ColorScheme? {
