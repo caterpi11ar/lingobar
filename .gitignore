@@ -1,4 +1,5 @@
 # Xcode / SwiftPM build artifacts
+build/
 .build/
 .swiftpm/
 .swift-module-cache/
