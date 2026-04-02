@@ -287,7 +287,7 @@ final class LingobarApplicationTests: XCTestCase {
             autoWriteBackEnabled: false,
             notificationsEnabled: false,
             statsEnabled: true,
-            language: .init(sourceCode: "auto", targetCode: "ja"),
+            language: .init(sourceCode: "auto", targetCode: "zh"),
             featureProviders: .init(clipboardTranslate: ProviderID.googleTranslate.rawValue),
             providersConfig: [ProviderConfig(id: ProviderID.googleTranslate.rawValue, name: "Google", provider: .googleTranslate)]
         )

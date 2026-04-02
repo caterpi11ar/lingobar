@@ -469,12 +469,34 @@ public struct BatchQueueConfig: Codable, Equatable, Sendable {
     }
 }
 
+public struct SupportedLanguage: Sendable {
+    public let code: String
+    public let displayName: String
+
+    public static let all: [SupportedLanguage] = [
+        .init(code: "zh", displayName: "中文"),
+        .init(code: "en", displayName: "English"),
+        .init(code: "ja", displayName: "日本語"),
+        .init(code: "ko", displayName: "한국어"),
+        .init(code: "fr", displayName: "Français"),
+        .init(code: "de", displayName: "Deutsch"),
+        .init(code: "es", displayName: "Español"),
+        .init(code: "it", displayName: "Italiano"),
+        .init(code: "pt", displayName: "Português"),
+        .init(code: "ru", displayName: "Русский"),
+    ]
+
+    public static let autoDetect = SupportedLanguage(code: "auto", displayName: "自动检测")
+
+    public static let sourceOptions: [SupportedLanguage] = [autoDetect] + all
+}
+
 public struct TranslationLanguageConfig: Codable, Equatable, Sendable {
     public var sourceCode: String
     public var targetCode: String
     public var level: TranslationLevel
 
-    public init(sourceCode: String = "auto", targetCode: String = "en", level: TranslationLevel = .intermediate) {
+    public init(sourceCode: String = "auto", targetCode: String = "zh", level: TranslationLevel = .intermediate) {
         self.sourceCode = sourceCode
         self.targetCode = targetCode
         self.level = level

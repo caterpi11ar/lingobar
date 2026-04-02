@@ -38,6 +38,22 @@ struct SettingsRootView: View {
                         .accessibilityIdentifier("settings.statsEnabled")
                 }
 
+                Section("语言") {
+                    Picker("源语言", selection: $model.settings.language.sourceCode) {
+                        ForEach(SupportedLanguage.sourceOptions, id: \.code) { lang in
+                            Text(lang.displayName).tag(lang.code)
+                        }
+                    }
+                    .accessibilityIdentifier("settings.sourceLanguage")
+
+                    Picker("目标语言", selection: $model.settings.language.targetCode) {
+                        ForEach(SupportedLanguage.all, id: \.code) { lang in
+                            Text(lang.displayName).tag(lang.code)
+                        }
+                    }
+                    .accessibilityIdentifier("settings.targetLanguage")
+                }
+
                 Section("翻译服务") {
                     Picker("服务商", selection: $model.settings.featureProviders.clipboardTranslate) {
                         ForEach(model.settings.providersConfig.filter(\.enabled), id: \.id) { provider in

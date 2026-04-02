@@ -254,14 +254,24 @@ public actor ClipboardTranslationCoordinator {
     }
 
     private static func resolvedLanguageConfig(for text: String, fallback: TranslationLanguageConfig) -> TranslationLanguageConfig {
-        switch detectPrimaryLanguage(in: text) {
-        case .chinese:
-            return TranslationLanguageConfig(sourceCode: "zh", targetCode: "en", level: fallback.level)
-        case .english:
-            return TranslationLanguageConfig(sourceCode: "en", targetCode: "zh", level: fallback.level)
-        case .unknown:
-            return fallback
+        guard fallback.sourceCode == "auto" else { return fallback }
+
+        let detected = detectPrimaryLanguage(in: text)
+        let detectedCode: String
+        switch detected {
+        case .chinese: detectedCode = "zh"
+        case .english: detectedCode = "en"
+        case .unknown: return fallback
         }
+
+        let targetCode: String
+        if detectedCode == fallback.targetCode {
+            targetCode = (detectedCode == "zh") ? "en" : "zh"
+        } else {
+            targetCode = fallback.targetCode
+        }
+
+        return TranslationLanguageConfig(sourceCode: detectedCode, targetCode: targetCode, level: fallback.level)
     }
 
     private static func detectPrimaryLanguage(in text: String) -> DetectedLanguage {
