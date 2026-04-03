@@ -3,14 +3,15 @@
   <h1>Lingobar</h1>
   <p>macOS 菜单栏翻译工具 — 剪贴板监听 · 低打扰翻译 · 本地统计</p>
 
-  [![GitHub release](https://img.shields.io/github/v/release/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/releases)
-  [![Platform](https://img.shields.io/badge/platform-macOS%2015%2B-blue?style=flat-square)](https://github.com/caterpi11ar/lingobar)
-  [![Swift](https://img.shields.io/badge/Swift-6.0-orange?style=flat-square&logo=swift)](https://swift.org)
-  [![GitHub stars](https://img.shields.io/github/stars/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/stargazers)
-  [![GitHub issues](https://img.shields.io/github/issues/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/issues)
-  [![GitHub license](https://img.shields.io/github/license/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/blob/main/LICENSE)
-
-  **[English](README_EN.md)** | 中文
+  <p>
+    <a href="https://github.com/caterpi11ar/lingobar/releases"><img src="https://img.shields.io/github/v/release/caterpi11ar/lingobar?style=flat-square" alt="GitHub release"></a>
+    <a href="https://github.com/caterpi11ar/lingobar"><img src="https://img.shields.io/badge/platform-macOS%2015%2B-blue?style=flat-square" alt="Platform"></a>
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-6.0-orange?style=flat-square&logo=swift" alt="Swift"></a>
+    <a href="https://github.com/caterpi11ar/lingobar/stargazers"><img src="https://img.shields.io/github/stars/caterpi11ar/lingobar?style=flat-square" alt="GitHub stars"></a>
+    <a href="https://github.com/caterpi11ar/lingobar/issues"><img src="https://img.shields.io/github/issues/caterpi11ar/lingobar?style=flat-square" alt="GitHub issues"></a>
+    <a href="https://github.com/caterpi11ar/lingobar/blob/main/LICENSE"><img src="https://img.shields.io/github/license/caterpi11ar/lingobar?style=flat-square" alt="GitHub license"></a>
+  </p>
+  <p><a href="README_EN.md"><b>English</b></a> | 中文</p>
 
 </div>
 
