@@ -1,24 +1,39 @@
-# Lingobar
+<div align="center">
+  <img src="public/icon.png" width="128" height="128" alt="Lingobar Logo">
+  <h1>Lingobar</h1>
+  <p>macOS 菜单栏翻译工具 — 剪贴板监听 · 低打扰翻译 · 本地统计</p>
 
-`Lingobar` 是一个面向 macOS 的菜单栏翻译工具。应用会监听剪贴板中的文本变化，在低打扰的前提下完成翻译、菜单栏预览、可选回写剪贴板，以及本地统计。
+  [![GitHub release](https://img.shields.io/github/v/release/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/releases)
+  [![Platform](https://img.shields.io/badge/platform-macOS%2015%2B-blue?style=flat-square)](https://github.com/caterpi11ar/lingobar)
+  [![Swift](https://img.shields.io/badge/Swift-6.0-orange?style=flat-square&logo=swift)](https://swift.org)
+  [![GitHub stars](https://img.shields.io/github/stars/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/stargazers)
+  [![GitHub issues](https://img.shields.io/github/issues/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/issues)
+  [![GitHub license](https://img.shields.io/github/license/caterpi11ar/lingobar?style=flat-square)](https://github.com/caterpi11ar/lingobar/blob/main/LICENSE)
+
+  **[English](README_EN.md)** | 中文
+
+</div>
 
 ## 功能特性
 
-- macOS 15+ 菜单栏常驻翻译应用
-- 自动监听剪贴板文本变化并翻译
+- 菜单栏常驻，随时翻译
+- 自动监听剪贴板文本变化并触发翻译
 - 菜单栏实时状态反馈与译文预览
 - 可选自动回写剪贴板
 - 本地翻译统计
 - 设置页支持自定义配置，自动保存并即时生效
+- 支持自定义翻译服务（OpenAI 兼容接口）
+- 支持源语言 / 目标语言选择，默认自动检测
 
 ## 效果预览
+
 ![gif 效果预览](public/example1.gif)
 
 ![菜单栏翻译弹层](public/example2.png)
 
 ## 安装
 
-前往 [Releases](../../releases) 页面下载最新的 DMG 文件，打开后将 `Lingobar.app` 拖入 `Applications` 文件夹即可。
+前往 [Releases](https://github.com/caterpi11ar/lingobar/releases) 页面下载最新的 DMG 文件，打开后将 `Lingobar.app` 拖入 `Applications` 文件夹即可。
 
 ## 首次打开
 
@@ -36,6 +51,24 @@ xattr -cr "/Applications/Lingobar.app"
 
 以上任一方法操作后，后续即可正常打开。
 
+## 从源码构建
+
+```bash
+git clone https://github.com/caterpi11ar/lingobar.git
+cd lingobar
+open Lingobar.xcodeproj
+```
+
+在 Xcode 中选择 `Lingobar` scheme，按 `Cmd+R` 运行。
+
 ## 系统要求
 
 - macOS 15+
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 致谢
+
+- [read-frog](https://github.com/nicepkg/read-frog) — 翻译服务相关参考
