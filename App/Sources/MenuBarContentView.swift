@@ -7,46 +7,41 @@ struct MenuBarContentView: View {
     let onQuit: () -> Void
     @State private var headerIcon: NSImage?
     private let contentWidth: CGFloat = 360
-    private let maxPopoverHeight: CGFloat = 340
-    private let maxScrollableContentHeight: CGFloat = 190
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             header
 
-            ScrollView(.vertical, showsIndicators: true) {
-                VStack(alignment: .leading, spacing: 12) {
-                    if let source = model.menuBarSourcePreview {
-                        InfoCard(title: "剪贴板原文", content: source)
-                            .accessibilityIdentifier("menu.sourcePreview")
-                    }
-
-                    if let translated = model.menuBarTranslatedPreview {
-                        InfoCard(
-                            title: model.translationRuntimeState.writeBackApplied ? "译文（已回写剪贴板）" : "译文",
-                            content: translated,
-                            emphasized: true
-                        )
-                        .accessibilityIdentifier("menu.translationPreview")
-                    }
-
-                    if let providerName = model.translationRuntimeState.providerName {
-                        HStack(spacing: 8) {
-                            Text("翻译服务")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                            Text(providerName)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .accessibilityIdentifier("menu.provider")
-                        }
-                        .padding(.horizontal, 2)
-                    }
+            VStack(alignment: .leading, spacing: 12) {
+                if let source = model.menuBarSourcePreview {
+                    InfoCard(title: "剪贴板原文", content: source)
+                        .accessibilityIdentifier("menu.sourcePreview")
                 }
-                .padding(.trailing, 4)
+
+                if let translated = model.menuBarTranslatedPreview {
+                    InfoCard(
+                        title: model.translationRuntimeState.writeBackApplied ? "译文（已回写剪贴板）" : "译文",
+                        content: translated,
+                        emphasized: true
+                    )
+                    .accessibilityIdentifier("menu.translationPreview")
+                }
+
+                if let providerName = model.translationRuntimeState.providerName {
+                    HStack(spacing: 8) {
+                        Text("翻译服务")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                        Text(providerName)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .accessibilityIdentifier("menu.provider")
+                    }
+                    .padding(.horizontal, 2)
+                }
             }
-            .frame(maxHeight: maxScrollableContentHeight)
+            .padding(.trailing, 4)
 
             Divider()
             HStack(spacing: 10) {
@@ -69,7 +64,6 @@ struct MenuBarContentView: View {
         }
         .padding(16)
         .frame(width: contentWidth)
-        .frame(maxHeight: maxPopoverHeight)
         .background(
             RoundedRectangle(cornerRadius: 18, style: .continuous)
                 .fill(Color(nsColor: .windowBackgroundColor).opacity(0.96))
@@ -145,6 +139,7 @@ private struct InfoCard: View {
     let title: String
     let content: String
     var emphasized: Bool = false
+    private let fixedScrollableContentHeight: CGFloat = 140
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -152,11 +147,7 @@ private struct InfoCard: View {
                 .font(.system(size: 11, weight: .bold))
                 .foregroundStyle(.secondary)
                 .tracking(0.6)
-            Text(content)
-                .font(emphasized ? .system(size: 14, weight: .medium) : .system(size: 13))
-                .foregroundStyle(.primary)
-                .lineLimit(emphasized ? 5 : 4)
-                .textSelection(.enabled)
+            contentView
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -169,5 +160,32 @@ private struct InfoCard: View {
 
     private var cardBackground: some ShapeStyle {
         emphasized ? AnyShapeStyle(Color.accentColor.opacity(0.08)) : AnyShapeStyle(Color.primary.opacity(0.035))
+    }
+
+    @ViewBuilder
+    private var contentView: some View {
+        if emphasized {
+            ScrollView(.vertical, showsIndicators: false) {
+                Text(content)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .textSelection(.enabled)
+            }
+            .frame(height: fixedScrollableContentHeight, alignment: .top)
+        } else {
+            ScrollView(.vertical, showsIndicators: false) {
+                Text(content)
+                    .font(.system(size: 13))
+                    .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .textSelection(.enabled)
+            }
+            .frame(height: fixedScrollableContentHeight, alignment: .top)
+        }
     }
 }
