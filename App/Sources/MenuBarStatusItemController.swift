@@ -4,6 +4,9 @@ import SwiftUI
 
 @MainActor
 final class MenuBarStatusItemController: NSObject {
+    private let popoverWidth: CGFloat = 360
+    private let minPopoverHeight: CGFloat = 220
+    private let maxPopoverHeight: CGFloat = 560
     private let model: LingobarAppModel
     private let settingsWindowController: SettingsWindowController?
     private let statusItem: NSStatusItem
@@ -37,7 +40,7 @@ final class MenuBarStatusItemController: NSObject {
 
     private func configurePopover() {
         popover.behavior = .transient
-        popover.contentSize = NSSize(width: 360, height: 340)
+        popover.contentSize = NSSize(width: popoverWidth, height: minPopoverHeight)
         popover.contentViewController = NSHostingController(
             rootView: MenuBarContentView(
                 model: model,
@@ -49,6 +52,7 @@ final class MenuBarStatusItemController: NSObject {
                 }
             )
         )
+        updatePopoverSize()
         applyPopoverTheme()
     }
 
@@ -57,6 +61,9 @@ final class MenuBarStatusItemController: NSObject {
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.refreshStatusItem()
+                if self?.popover.isShown == true {
+                    self?.updatePopoverSize()
+                }
             }
             .store(in: &cancellables)
 
@@ -141,9 +148,20 @@ final class MenuBarStatusItemController: NSObject {
         if popover.isShown {
             popover.performClose(nil)
         } else {
+            updatePopoverSize()
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             popover.contentViewController?.view.window?.makeKey()
         }
+    }
+
+    private func updatePopoverSize() {
+        guard let view = popover.contentViewController?.view else { return }
+        view.frame.size.width = popoverWidth
+        view.layoutSubtreeIfNeeded()
+
+        let fittingHeight = view.fittingSize.height
+        let clampedHeight = min(max(fittingHeight, minPopoverHeight), maxPopoverHeight)
+        popover.contentSize = NSSize(width: popoverWidth, height: clampedHeight)
     }
 
     private func openSettings() {
