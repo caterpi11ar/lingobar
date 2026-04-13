@@ -139,7 +139,7 @@ private struct InfoCard: View {
     let title: String
     let content: String
     var emphasized: Bool = false
-    private let fixedScrollableContentHeight: CGFloat = 140
+    private let maxContentHeight: CGFloat = 140
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -174,7 +174,8 @@ private struct InfoCard: View {
                     .multilineTextAlignment(.leading)
                     .textSelection(.enabled)
             }
-            .frame(height: fixedScrollableContentHeight, alignment: .top)
+            .id("translation-\(content)")
+            .frame(maxHeight: maxContentHeight, alignment: .top)
         } else {
             ScrollView(.vertical, showsIndicators: false) {
                 Text(content)
@@ -185,7 +186,8 @@ private struct InfoCard: View {
                     .multilineTextAlignment(.leading)
                     .textSelection(.enabled)
             }
-            .frame(height: fixedScrollableContentHeight, alignment: .top)
+            .id("source-\(content)")
+            .frame(maxHeight: maxContentHeight, alignment: .top)
         }
     }
 }
